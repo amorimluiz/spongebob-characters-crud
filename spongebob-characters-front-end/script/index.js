@@ -80,7 +80,6 @@ function editCharacter(id){
         "alive": true
     }
 
-    console.log(char)
     api.put(`att-character/${id}`, char)
 }
 
