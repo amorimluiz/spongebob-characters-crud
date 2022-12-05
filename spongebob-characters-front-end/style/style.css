@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Klee+One:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.new-character-button-div{
+    width: 470px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+#new-character-button{
+    background-color: rgba(29, 92, 187, 0.973);
+}
+
+#content-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.character-card{
+    background-color: #ffa1b1fa;
+    width: 500px;
+    border-radius: 15px;
+    margin-top: 15px;
+    padding: 5px 5px;
+    box-shadow: 2px 2px 2px 1px #1f1f1f8f;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.property{
+    margin: 0px 0px 7px 0px;
+    font-family: 'Klee One', cursive;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.name{
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.character-buttons-div{
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    margin-top: 8px;
+}
+
+.character-card-button{
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #6e0000f3;
+    cursor: pointer;
+}
+
+.sort-buttons-div{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin: 30px 0px 12px 0;
+}
+
+.sort-button{
+    background-color: #e75d00;
+}
+
+@media only screen and (max-device-width: 700px) {
+
+    .new-character-button-div{
+        justify-content: center;
+        width: 100%;
+    }
+
+    .character-card{
+        width: 100%;
+    }
+
+    .sort-buttons-div{
+        flex-direction: column;
+        width: 270px;
+        margin-bottom: 3px;
+    }
+
+    .sort-button{
+        margin: 10px 0px;
+    }
+}
+
+@media only screen and (max-device-width: 300px){
+    .character-card{
+        width: 270px;
+    }
+}
