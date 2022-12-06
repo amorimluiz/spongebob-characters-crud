@@ -29,6 +29,7 @@ app.post("/add-character", (req, res) => {
   const data = JSON.parse(fs.readFileSync(url))
   const proxId = data.characters.length + 1
   req.body['id'] = proxId
+  parseInt(req.body['appearances'])
   data.characters.push(req.body)
   write(data)
   return res.status(200).json({
@@ -39,16 +40,15 @@ app.post("/add-character", (req, res) => {
 
 app.get("/character/:id", (req, res) => {
   const data = JSON.parse(fs.readFileSync(url))
+  let character
   data.characters.map(char => {
     if(char.id == req.params.id){
-      return res.status(200).json(char)
+      character = char
     }
   })
-  return res.status(400).json({
-    error: true,
-    message: 'Personagem não encontrado'
-  })
+  return res.status(200).json(character)
 })
+
 
 app.put("/att-character/:id", (req, res) => {
   const data = JSON.parse(fs.readFileSync(url))
@@ -56,16 +56,16 @@ app.put("/att-character/:id", (req, res) => {
   const char = data.characters[Number(pos)]
   const reqChar = req.body
   for(property in reqChar){
-    if(reqChar[`${property}`] != "" && reqChar[`${property}`] != null){
+    if(reqChar[`${property}`] != "" || reqChar[`${property}`] != null){
       char[`${property}`] = reqChar[`${property}`]
     }
   }
-  reqChar['id'] = req.params.id
-  data.characters[Number(pos)] = reqChar
+  data.characters[pos] = char
   write(data)
   return res.status(200).json({
     error: false,
-    message: "Personagem foi atualizado com sucesso"
+    message: "Personagem foi atualizado com sucesso",
+    character: char
   })
 })
 
@@ -85,6 +85,7 @@ app.delete("/delete-character/:id", (req, res) => {
   })
 })
 
-app.listen(80, () => {
-  console.log("Servidor iniciado na porta 8080: http://localhost:80/")
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta: ${PORT}`)
 })

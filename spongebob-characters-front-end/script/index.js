@@ -19,11 +19,11 @@ function generateCharacterCard(char){
     div.classList.add('character-card')
     div.setAttribute('id', `character-card-${char.id}`)
     div.setAttribute('char-id', char.id)
-    div.innerHTML += `<p class="property name"><span class="property-data" contenteditable>${char.name}</span></p>
-                      <p class="property">Gênero: <span class="property-data" contenteditable>${char.gender}</span></p>
-                      <p class="property">Espécie: <span class="property-data" contenteditable>${char.specie}</span></p>
-                      <p class="property">Profissão: <span class="property-data" contenteditable>${char.profession}</span></p>
-                      <p class="property">Aparições: <span class="property-data" contenteditable>${char.appearances}</span></p>`
+    div.innerHTML += `<p class="property name"><span class="property-data">${char.name}</span></p>
+                      <p class="property">Gênero: <span class="property-data">${char.gender}</span></p>
+                      <p class="property">Espécie: <span class="property-data">${char.specie}</span></p>
+                      <p class="property">Profissão: <span class="property-data">${char.profession}</span></p>
+                      <p class="property">Aparições: <span class="property-data">${char.appearances}</span></p>`
 
     const buttonsDiv = document.createElement('div')
     buttonsDiv.classList.add('character-buttons-div')
@@ -37,7 +37,7 @@ function generateCharacterCard(char){
 
 function generateIconButton(action, icon){
     let button = 
-        `<button type="button" class="${action}-button character-card-button"">
+        `<button type="button" class="${action}-button character-card-button" value="${action}"">
             <i class="${icon}"></i>
         </button>`
     return button
@@ -49,38 +49,15 @@ function sort(characters, sortFunction){
 }
 
 function startCharacterButtons(){
-    const deleteButtons = document.getElementsByClassName('delete-button')
-    for(let i = 0; i < deleteButtons.length; i++){
-        deleteButtons[i].addEventListener('click', () => {
-            const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
-            api.delete('delete-character', id)
-            document.location.reload(true)
+    const characterButtons = document.getElementsByClassName('character-card-button')
+    for(let i = 0; i < characterButtons.length; i++){
+        characterButtons[i].addEventListener('click', () => {
+            const id = characterButtons[i].parentElement.parentElement.getAttribute('char-id')
+            localStorage.setItem('char-id', id)
+            console.log(localStorage.getItem('char-id'))
+            location.href = `./pages/${characterButtons[i].value}-character.html`
         })
     }
-
-    const editButtons = document.getElementsByClassName('edit-button')
-    for(let i = 0; i < editButtons.length; i++){
-        editButtons[i].addEventListener('click', () => {
-            const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
-            editCharacter(id)
-            document.location.reload(true)
-        })
-    }
-}
-
-function editCharacter(id){
-    const card = document.getElementById(`character-card-${id}`)
-    const ps = card.getElementsByClassName('property-data')
-    const char = {
-        "name": ps[0].innerText,
-        "gender": ps[1].innerText,
-        "specie": ps[2].innerText,
-        "profession": ps[3].innerText,
-        "appearances": ps[4].innerText,
-        "alive": true
-    }
-
-    api.put(`att-character/${id}`, char)
 }
 
 function main(){
@@ -105,7 +82,7 @@ function main(){
 
     const newCharacterButton = document.getElementById('new-character-button')
     newCharacterButton.addEventListener('click', () => {
-        location.href = `${location.origin}/spongebob-characters-front-end/new-character.html`
+        location.href = "./pages/new-character.html"
     })
 }
 
