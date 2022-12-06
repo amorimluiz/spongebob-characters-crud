@@ -31,10 +31,10 @@ function sendRequest(req, url){
     char['alive'] = Boolean(formData.get('alive'))
   }
 
-  makeRequest(req, url)  
+  makeRequest(req, url, char)  
 }
 
-function makeRequest(req, url){
+function makeRequest(req, url, char){
   if(req == 'PUT')
     console.log(api.put(url, char))
     
