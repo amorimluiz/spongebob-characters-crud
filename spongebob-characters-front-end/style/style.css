@@ -84,8 +84,12 @@
         width: 100%;
     }
 
-    .character-card{
+    #content-div{
         width: 100%;
+    }
+
+    .character-card{
+        width: 99%;
     }
 
     .sort-buttons-div{

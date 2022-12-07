@@ -58,6 +58,39 @@ input[type=number]::-webkit-outer-spin-button {
   color: #6e0000c0;
 }
 
+.radio-input-div{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  align-items: center;
+  box-shadow: 2px 2px 5px 1px #1f1f1fb0;
+  border-radius: 7px;
+  padding: 4px;
+  background-color: #fff;
+}
+
+.radio-input-div-text, .radio-text{
+  font-family: 'Klee One', cursive;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.label-input-radio-divs-div{
+  display: flex;
+  align-items: flex-start;
+}
+
+.label-input-radio-div{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin: 0px 10px;
+}
+
+.radio{
+  margin-right: 2px;
+}
+
 .buttons-form-div{
   display: flex;
   justify-content: flex-end;
@@ -84,5 +117,15 @@ input[type=number]::-webkit-outer-spin-button {
 
   .buttons-form-div{
     justify-content: center;
+  }
+}
+
+@media only screen and (max-device-width: 420px){
+  .radio-input-div-text, .radio-text{
+    font-size: 0.9rem;
+  }
+
+  .radio-input-div{
+    padding: 5px;
   }
 }

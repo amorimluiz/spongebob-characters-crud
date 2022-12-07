@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="head-title"></title>
+  <link rel="stylesheet" href="../style/forms.css">
+  <link rel="stylesheet" href="../style/shared.css">
+  <script src="https://kit.fontawesome.com/88456b759f.js" crossorigin="anonymous"></script>
+</head>
+<body class="body">
+  <header class="header">
+    <h1 class="h1-header" id="">Personagens de Bob Esponja</h1>
+  </header>
+    <div class="content-div">
+      <div class="form-header-div">
+        <a href="./index.html" class="back-link"><i class="fa-solid fa-arrow-left-long"></i></a>
+        <h2 class="form-title" id="form-title"></h2>
+      </div>
+      <form id="character-form">
+        <input type="text" class="form-input-text form-input" name="name" id="name" placeholder="Nome">
+        <input type="text" class="form-input-text form-input" name="gender" id="gender" placeholder="Gênero">
+        <input type="text" class="form-input-text form-input" name="specie" id="specie" placeholder="Espécie">
+        <input type="text" class="form-input-text form-input" name="profession" id="profession" placeholder="Profissão">
+        <input type="number" class="form-input-text form-input" name="appearances" id="appearances" placeholder="Aparições">
+        <div class="radio-input-div">
+          <span class="radio-input-div-text">Personagem está vivo?</span>
+          <div class="label-input-radio-divs-div" id="radio-div">
+            <div class="label-input-radio-div">
+              <label for="alive" class="radio-text">Vivo</label>
+              <input type="radio" class="radio form-input" name="alive" id="its-alive" value="true">
+            </div>
+            <div class="label-input-radio-div">
+              <label for="dead" class="radio-text">Morto</label>
+              <input type="radio" class="radio form-input" name="alive" id="its-dead" value="false">
+            </div>
+          </div>
+        </div>
+        <div class="buttons-form-div">
+          <button type="button" class="action-button form-button" id="cancel-button">Cancelar</button>
+          <button type="submit" class="action-button form-button" id="send-button"></button>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="./services/decider.js"></script>
+</body>
+</html>

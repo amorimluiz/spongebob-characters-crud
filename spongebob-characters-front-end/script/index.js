@@ -37,7 +37,7 @@ function generateCharacterCard(char){
 
 function generateIconButton(action, icon){
     let button = 
-        `<button type="button" class="${action}-button character-card-button" value="${action}"">
+        `<button type="button" class="${action}-button character-card-button"">
             <i class="${icon}"></i>
         </button>`
     return button
@@ -49,13 +49,32 @@ function sort(characters, sortFunction){
 }
 
 function startCharacterButtons(){
-    const characterButtons = document.getElementsByClassName('character-card-button')
-    for(let i = 0; i < characterButtons.length; i++){
-        characterButtons[i].addEventListener('click', () => {
-            const id = characterButtons[i].parentElement.parentElement.getAttribute('char-id')
+    const editButtons = document.getElementsByClassName('edit-button')
+    for(let i = 0; i < editButtons.length; i++){
+        editButtons[i].addEventListener('click', () => {
+            const id = editButtons[i].parentElement.parentElement.getAttribute('char-id')
             localStorage.setItem('char-id', id)
-            console.log(localStorage.getItem('char-id'))
-            location.href = `./pages/${characterButtons[i].value}-character.html`
+            const infos = {
+                "script": "edit",
+                "title": "Editar Personagem",
+                "button-action": "Salvar"
+            }
+            localStorage.setItem("page-data", JSON.stringify(infos))
+            location.href = `./form.html`
+        })
+    }
+    const deleteButtons = document.getElementsByClassName('delete-button')
+    for(let i = 0; i < deleteButtons.length; i++){
+        deleteButtons[i].addEventListener('click', () => {
+            const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
+            localStorage.setItem('char-id', id)
+            const infos = {
+                "script": "delete",
+                "title": "Deletar Personagem",
+                "button-action": "Deletar"
+            }
+            localStorage.setItem("page-data", JSON.stringify(infos))
+            location.href = `./form.html`
         })
     }
 }
@@ -82,7 +101,14 @@ function main(){
 
     const newCharacterButton = document.getElementById('new-character-button')
     newCharacterButton.addEventListener('click', () => {
-        location.href = "./pages/new-character.html"
+        const infos = {
+            "script": "new",
+            "title": "Adicionar Personagem",
+            "button-action": "Enviar"
+        }
+
+        localStorage.setItem("page-data", JSON.stringify(infos))
+        location.href = "./form.html"
     })
 }
 

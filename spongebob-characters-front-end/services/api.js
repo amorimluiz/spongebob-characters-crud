@@ -1,6 +1,7 @@
 class API {
 
   #request = new XMLHttpRequest
+  // #url = "https://spongebob-characters-api.onrender.com"
   #url = "http://localhost:3000"
   
   get(url){
